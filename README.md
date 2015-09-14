@@ -21,4 +21,4 @@ you can always publish your own.
 
 So give it a shot and tell us what you think!
 
-<small>This GitHub project is open to contributions</small>
+> This GitHub project is open to contributions
