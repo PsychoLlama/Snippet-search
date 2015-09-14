@@ -15,24 +15,22 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 db.once('open',function (callback) {
     var UserSchema = mongoose.Schema({
-        Snipplet:[]
+        Snipplet:Object
     });
     usersinfo = mongoose.model('Snippetinformation', UserSchema);
 
-    app.get('/', function (req, res) {
-        usersinfo.findOne({name:'codesolutions'},function (err, snipp) {
-            console.log(snipp);
+
+    app.get('/snippet.json',function(req,res){
+        usersinfo.findOne({name:'codesolutions'},function (err, snipp){
             if (err) return console.error(err);
-            if(snipp){
-                res.render('index',{
-                    snipplets:snipp.Snipplet
-                });
-            }else{
-                res.render('index',{
-                    snipplets:[]
-                });
-            }
-        })
+            var snipping = snipp.Snipplet;
+            res.write(JSON.stringify(snipping));
+        });
+    });
+
+    app.get('/', function (req, res) {
+            res.render('index');
+        });
     });
 
     app.get('/codeadded', function (req, res) {
@@ -45,7 +43,6 @@ db.once('open',function (callback) {
             else
                 res.redirect('/')
         });
-    });
 
 });//ending of data base on connect
 
