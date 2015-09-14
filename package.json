@@ -1,0 +1,14 @@
+{
+  "name": "snipplet",
+  "version": "1.0.0",
+  "description": "Persnal code libary storage program",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Gwartney",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
