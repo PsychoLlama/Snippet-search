@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<pre><code>
+        $(window).keyup(function(e) {
+        var getinfo  = $('.something');
+        var start = e.keyCode;
+
+        for(var i=0; i<getinfo.length; i++){
+        var elem = $(getinfo[i]);
+        var macro = elem.val().toString().toUpperCase().charCodeAt();
+
+        if(macro === start){
+        var ind = elem.data('track');
+        $('#play'+ind).trigger("pause");
+        }
+        }
+        });
+</code></pre>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
