@@ -9,6 +9,11 @@
   "author": "Alex Gwartney",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.3"
+    "body-parser": "^1.13.3",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "mongodb": "^2.0.42",
+    "mongoose": "^4.1.6",
+    "path": "^0.12.7"
   }
 }
