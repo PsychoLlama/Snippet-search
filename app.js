@@ -24,6 +24,7 @@ db.once('open',function (callback) {
         usersinfo.findOne({name:'codesolutions'},function (err, snipp){
             if (err) return console.error(err);
             var snipping = snipp.Snipplet;
+            console.log(JSON.stringify(snipping));
             res.write(JSON.stringify(snipping));
         });
     });
@@ -41,7 +42,7 @@ db.once('open',function (callback) {
         usersinfo.update({'name':'codesolutions'}, {$set:{Snipplet:req.body.added}}, {upsert: true}, function (err) {
             if (err) return console.error(err);
             else
-                res.redirect('/')
+                res.redirect('/snippet.json')
         });
 
 });//ending of data base on connect
