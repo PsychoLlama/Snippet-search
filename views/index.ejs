@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title>Home | Snippet Search</title>
+
+  <!--styles-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/styles/home.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
+
+  <!--scripts-->
+  <script src="../assets/scripts/angular.js"></script>
+  <script src="../assets/scripts/app.js"></script>
 </head>
-<body>
 
-<pre><code>
-        $(window).keyup(function(e) {
-        var getinfo  = $('.something');
-        var start = e.keyCode;
+<body ng-app='app'>
+  <navbar />
 
-        for(var i=0; i<getinfo.length; i++){
-        var elem = $(getinfo[i]);
-        var macro = elem.val().toString().toUpperCase().charCodeAt();
-
-        if(macro === start){
-        var ind = elem.data('track');
-        $('#play'+ind).trigger("pause");
-        }
-        }
-        });
-</code></pre>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
 </body>
+
 </html>
