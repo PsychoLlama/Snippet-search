@@ -6,22 +6,18 @@
 </head>
 <body>
 
-<pre><code>
-        $(window).keyup(function(e) {
-        var getinfo  = $('.something');
-        var start = e.keyCode;
+<form action="/search" method="POST">
+        <input type="text" name="search" value="search">
+        <button type="submit">Search Code</button>
+</form>
+<h2> <%= snipplets.title %> </h2>
+<pre>
+        <code>
 
-        for(var i=0; i<getinfo.length; i++){
-        var elem = $(getinfo[i]);
-        var macro = elem.val().toString().toUpperCase().charCodeAt();
+               <%= snipplets.body %>
 
-        if(macro === start){
-        var ind = elem.data('track');
-        $('#play'+ind).trigger("pause");
-        }
-        }
-        });
-</code></pre>
+        </code>
+</pre>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
