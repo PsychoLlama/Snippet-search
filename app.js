@@ -63,7 +63,7 @@
           });
         } else {
           res.render('index', {
-            snipplets: {}
+            snipplets: null
           });
         }
       });

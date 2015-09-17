@@ -5,7 +5,6 @@
   var titles = document.querySelectorAll('.thumbnail h3'),
     descriptions = document.querySelectorAll('.thumbnail p'),
     codeBlocks = document.getElementsByTagName('code'),
-    placeholder = "window.onload = function () {\n  console.log('Hello world!');\n}",
     setDefault,
     i;
 
@@ -24,7 +23,6 @@
 
   setDefault(titles, 'No title');
   setDefault(descriptions, 'No description');
-  setDefault(codeBlocks, placeholder);
 
   hljs.initHighlightingOnLoad();
 }());

@@ -47,6 +47,8 @@
   </div>
 </div>
 
+<% if (snipplets) { %>
+
 <!--Snippet-->
 <div class="container">
   <div class="row">
@@ -72,6 +74,16 @@
     </div>
   </div>
 </div>
+
+<% } else if (snipplets === null) { %>
+
+<div class="container">
+  <div class="alert alert-warning">
+    <strong>We couldn't find what you were looking for.</strong> You can also <a href="/codeadded">add your own</a>.
+  </div>
+</div>
+
+<% } %>
 
 <!--scripts-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
