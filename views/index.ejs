@@ -5,9 +5,6 @@
   <meta charset="UTF-8">
   <title>Home | Snippet Search</title>
 
-  <!--styles-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/assets/styles/home.css">
 </head>
 
 <body>
@@ -19,10 +16,9 @@
 
     <a href="/codeadded">
       <button class="btn btn-default navbar-btn">
-        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="glyphicon glyphicon-pencil">Search</span>
       </button>
     </a>
-
   </div>
 
 </nav>
@@ -43,9 +39,6 @@
       </div>
 
     </form>
-
-
-
 
   </div>
 </div>
@@ -78,34 +71,11 @@
 
 <!--scripts-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
-<script>
-  (function () {
+<script src="validation.js"></script>
 
-    var titles = document.querySelectorAll('.thumbnail h3'),
-            descriptions = document.querySelectorAll('.thumbnail p'),
-            codeBlocks = document.getElementsByTagName('code'),
-            placeholder = "window.onload = function () {\n  console.log('Hello world!');\n}";
-
-
-    // Set default messages for the code snippet fields
-    var setDefault = function (nodeList, message) {
-
-      for (var i = 0; i < nodeList.length; i++) {
-        var node = nodeList[i];
-
-        if (node.innerHTML.match(/^\s*$/g)) {
-          node.innerHTML = message;
-        }
-      }
-    }
-
-    setDefault(titles, 'No title');
-    setDefault(descriptions, 'No description');
-    setDefault(codeBlocks, placeholder)
-
-    hljs.initHighlightingOnLoad()
-  }());
-</script>
+<!--styles-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/styles/home.css">
 </body>
 
 </html>

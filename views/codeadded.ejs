@@ -2,20 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Add | Add Code Snippet</title>
 </head>
 <body>
 
+<!--Navigation-->
+<nav class="navbar navbar-default">
+
+    <div class="container-fluid">
+
+        <a href="/">
+            <button class="btn btn-default navbar-btn">
+                <span class="glyphicon glyphicon-search">Search</span>
+            </button>
+        </a>
+    </div>
+
+</nav>
+
+<!--Search field-->
+<div class="jumbotron">
+    <div class="container">
+
+        <h1></h1>
 
 
-<form  action="/codeenterd" method="POST">
-    <input type="text" name="title" value="title">
-    <textarea type="text" name="codesnippet"></textarea>
-    <textarea type="text" name="discription"></textarea>
+<!--Search field-->
+<div class="jumbotron">
+    <div class="container">
 
-    <button type="submit">Submit code</button>
-</form>
+        <h1>Add Snippet</h1>
+
+        <form class="input-group"  action="/codeenterd"  method="POST">
+            <input class="form-control" name="title" value="title" type="text"placeholder="Clearfix, Node server, etc...">
+            <h3>Code Snippet</h3>
+            <textarea class="form-control" name="codesnippet" cols="150" rows="3"></textarea>
+            <h3>Description</h3>
+            <textarea class="form-control" name="discription" rows="3"></textarea>
 
 
+            <button id="submitcode" type="submit" class="btn btn-lg btn-primary">Submit</button>
+
+
+        </form>
+
+    </div>
+</div>
+
+<!--styles-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/styles/home.css">
 </body>
 </html>
