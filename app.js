@@ -19,7 +19,7 @@ db.once('open',function (callback) {
     });
     usersinfo = mongoose.model('Snippetinformation', UserSchema);
 
-    app.use('/assets', express['static']('assets'));
+
 
     app.get('/codeadded', function (req, res) {
         res.render('codeadded');
@@ -51,7 +51,8 @@ db.once('open',function (callback) {
     app.post('/codeenterd',function(req,res){
         var updateobject = {
             title:req.body.title,
-            body:req.body.codesnippet
+            body:req.body.codesnippet,
+            desc:req.body.discription
         };
 
         usersinfo.update({'name':'codesolutions'},{$push:{Snipplet:updateobject}}, {upsert: true}, function (err) {
@@ -61,6 +62,18 @@ db.once('open',function (callback) {
         });
     });
 
+
+    app.post('/delete', function(req, res){
+        console.log(req.body);
+        usersinfo.findOneAndUpdate({'name':'codesolutions'},{$pull:{Snipplet:{body:req.body.filetodelete}}},function(err) {
+            if (err) return console.error(err);
+            else
+                res.redirect('/');
+        });
+    });
+
+
+
 });//ending of data base on connect
 
 var server = app.listen(3000, function () {
@@ -68,7 +81,5 @@ var server = app.listen(3000, function () {
     var port = server.address().port;
     console.log('Example app listening at http://%s:%s', host, port);
 });
-
-
 
 
