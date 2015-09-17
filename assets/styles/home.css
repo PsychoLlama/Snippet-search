@@ -2,4 +2,17 @@
 
 .navbar {
   border-radius: 0;
+  margin-bottom: 0;
+}
+.navbar .glyphicon {
+  margin-right: 5px;
+}
+.navbar-right {
+  float: right !important;
+  margin: 0 !important;
+  margin-right: 15px;
+}
+
+.jumbotron h1 {
+  margin-bottom: 35px;
 }
