@@ -1,56 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Add | Add Code Snippet</title>
+  <meta charset="UTF-8">
+  <title>New Snippet | Snippet Search</title>
+
+  <!--styles-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/styles/home.css">
 </head>
+
 <body>
 
-<!--Navigation-->
-<nav class="navbar navbar-default">
+  <!--Navigation-->
+  <nav class="navbar navbar-default">
 
     <div class="container-fluid">
 
-        <a href="/">
-            <button class="btn btn-default navbar-btn">
-                <span class="glyphicon glyphicon-search">Search</span>
-            </button>
-        </a>
+      <a href="/">
+        <button class="btn btn-default navbar-btn">
+          <span class="glyphicon glyphicon-search"></span> Search
+        </button>
+      </a>
     </div>
 
-</nav>
-
-<!--Search field-->
-<div class="jumbotron">
-    <div class="container">
-
-        <h1></h1>
+  </nav>
 
 
-<!--Search field-->
-<div class="jumbotron">
-    <div class="container">
+  <!--Snippet input-->
+  <div class="container">
 
-        <h1>Add Snippet</h1>
+    <h1>Add a Snippet</h1>
 
-        <form class="input-group"  action="/codeenterd"  method="POST">
-            <input class="form-control" name="title" value="title" type="text"placeholder="Clearfix, Node server, etc...">
-            <h3>Code Snippet</h3>
-            <textarea class="form-control" name="codesnippet" cols="150" rows="3"></textarea>
-            <h3>Description</h3>
-            <textarea class="form-control" name="discription" rows="3"></textarea>
+    <form action="/codeenterd" method="POST">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input class="form-control" id="title" name="title" type="text" placeholder="Your snippet title">
+      </div>
+
+      <div class="form-group">
+        <div id="ace-editor"></div>
+      </div>
+
+      <!--Hidden input holds snippet submission-->
+      <input type="hidden" name="codesnippet"></input>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+      </div>
+
+      <button id="submitcode" type="submit" class="btn btn-lg btn-primary">Submit</button>
 
 
-            <button id="submitcode" type="submit" class="btn btn-lg btn-primary">Submit</button>
+    </form>
+
+  </div>
 
 
-        </form>
-
-    </div>
-</div>
-
-<!--styles-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="/assets/styles/home.css">
+  <script src="assets/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/assets/scripts/ace-config.js"></script>
 </body>
+
 </html>

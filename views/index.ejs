@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <title>Home | Snippet Search</title>
 
+  <!--styles-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/styles/home.css">
+
 </head>
 
 <body>
@@ -16,7 +20,7 @@
 
     <a href="/codeadded">
       <button class="btn btn-default navbar-btn">
-        <span class="glyphicon glyphicon-pencil">Search</span>
+        <span class="glyphicon glyphicon-pencil"></span> New
       </button>
     </a>
   </div>
@@ -31,7 +35,7 @@
 
     <form class="input-group" action="/search"  method="POST">
 
-      <input class="form-control" name="search" value="search" type="text" placeholder="Clearfix, Node server, etc...">
+      <input class="form-control" name="search" type="text" placeholder="Clearfix, Node server, etc...">
 
 
       <div class="input-group-btn">
@@ -71,11 +75,7 @@
 
 <!--scripts-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
-<script src="validation.js"></script>
-
-<!--styles-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="/assets/styles/home.css">
+<script src="/assets/scripts/validation.js"></script>
 </body>
 
 </html>
