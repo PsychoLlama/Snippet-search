@@ -1,25 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title>Home | Snippet Search</title>
+
+  <!--styles-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/styles/home.css">
 </head>
+
 <body>
 
-<form action="/search" method="POST">
-        <input type="text" name="search" value="search">
-        <button type="submit">Search Code</button>
-</form>
-<h2> <%= snipplets.title %> </h2>
-<pre>
-        <code>
+  <!--Navigation-->
+  <nav class="navbar navbar-default">
 
-               <%= snipplets.body %>
+    <div class="container-fluid">
 
-        </code>
-</pre>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+      <a href="#new-snippet">
+        <button class="btn btn-default navbar-btn">
+          <span class="glyphicon glyphicon-pencil"></span> New
+        </button>
+      </a>
+
+      <div class="nav navbar-nav navbar-right">
+        <a href="#profile">
+          <button class="btn btn-default navbar-btn">
+            <span class="glyphicon glyphicon-user"></span> Profile
+          </button>
+        </a>
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!--Search field-->
+  <div class="jumbotron">
+    <div class="container">
+
+      <h1>Snippet Search</h1>
+
+      <form class="input-group" action="/search" name="search" value="search" method="POST">
+
+        <input class="form-control" type="text" placeholder="Clearfix, Node server, etc...">
+
+        <div class="input-group-btn">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!--Snippet-->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+
+        <div class="thumbnail">
+
+          <pre><code><%= snipplets.body %></code></pre>
+
+          <div class="caption">
+            <h3><%= snipplets.title %></h3>
+
+            <p></p>
+            <form action="/delete" method="DELETE">
+              <p>
+                <button class="btn btn-danger" name="filetodelete" type="submit">Delete</button>
+              </p>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!--scripts-->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+  <script>
+    (function () {
+
+      var titles = document.querySelectorAll('.thumbnail h3'),
+        descriptions = document.querySelectorAll('.thumbnail p'),
+        codeBlocks = document.getElementsByTagName('code'),
+        placeholder = "window.onload = function () {\n  console.log('Hello world!');\n}";
+
+
+      // Set default messages for the code snippet fields
+      var setDefault = function (nodeList, message) {
+
+        for (var i = 0; i < nodeList.length; i++) {
+          var node = nodeList[i];
+
+          if (node.innerHTML.match(/^\s*$/g)) {
+            node.innerHTML = message;
+          }
+        }
+      }
+
+      setDefault(titles, 'No title');
+      setDefault(descriptions, 'No description');
+      setDefault(codeBlocks, placeholder)
+
+      hljs.initHighlightingOnLoad()
+    }());
+  </script>
 </body>
+
 </html>

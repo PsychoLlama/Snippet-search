@@ -19,7 +19,7 @@ db.once('open',function (callback) {
     });
     usersinfo = mongoose.model('Snippetinformation', UserSchema);
 
-
+    app.use('/assets', express['static']('assets'));
 
     app.get('/codeadded', function (req, res) {
         res.render('codeadded');
