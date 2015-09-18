@@ -4,7 +4,6 @@
 
   var titles = document.querySelectorAll('.thumbnail h3'),
     descriptions = document.querySelectorAll('.thumbnail p'),
-    codeBlocks = document.getElementsByTagName('code'),
     setDefault,
     i;
 
@@ -17,6 +16,7 @@
 
       if (node.innerHTML.match(/^\s*$/g)) {
         node.innerHTML = message;
+        node.className += " text-muted";
       }
     }
   };

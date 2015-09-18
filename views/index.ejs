@@ -35,11 +35,11 @@
 
     <form class="input-group" action="/search"  method="POST">
 
-      <input class="form-control" name="search" type="text" placeholder="Clearfix, Node server, etc...">
+      <input class="form-control validate" name="search" type="text" placeholder="Clearfix, Node server, etc...">
 
 
       <div class="input-group-btn">
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-primary disabled">Search</button>
       </div>
 
     </form>
@@ -86,8 +86,9 @@
 <% } %>
 
 <!--scripts-->
+<script src="/assets/scripts/form-validation.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
-<script src="/assets/scripts/validation.js"></script>
+<script src="/assets/scripts/snippet-defaults.js"></script>
 </body>
 
 </html>
