@@ -4,7 +4,11 @@
 
   var titles = document.querySelectorAll('.thumbnail h3'),
     descriptions = document.querySelectorAll('.thumbnail p'),
+    deleteButtons = document.querySelectorAll('.thumbnail button.btn-danger'),
+    clicked = false,
     setDefault,
+    button,
+    warn,
     i;
 
 
@@ -20,6 +24,21 @@
       }
     }
   };
+
+  warn = function (e) {
+    if (clicked) {
+      return;
+    }
+    e.target.innerHTML = "Are you sure?";
+    e.preventDefault();
+    e.stopPropagation();
+    clicked = true;
+  };
+
+  for (i = 0; i < deleteButtons.length; i += 1) {
+    button = deleteButtons[i];
+    button.addEventListener('click', warn);
+  }
 
   setDefault(titles, 'No title');
   setDefault(descriptions, 'No description');
