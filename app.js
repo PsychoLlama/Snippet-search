@@ -1,9 +1,10 @@
 /*globals require, console */
-(function () {
+
   'use strict';
 
   var bodyParser = require('body-parser'),
     path = require('path'),
+      module = require('./databaseinfo'),
     mongoose = require('mongoose'),
     db = mongoose.connection,
     express = require('express'),
@@ -18,7 +19,7 @@
 
   app.use('/assets', express['static']('assets'));
 
-  mongoose.connect('mongodb://localhost/snippletdata/');
+  mongoose.connect(module);
 
   db.on('error', console.error.bind(console, 'connection error:'));
 
@@ -26,7 +27,7 @@
     var UserSchema = mongoose.Schema({
         Snipplet: []
       }),
-      usersinfo = mongoose.model('Snippetinformation', UserSchema);
+      usersinfo = mongoose.model('snippletdata2', UserSchema);
 
 
 
@@ -114,8 +115,6 @@
 
     });
 
-
-
   }); // ending of data base on connect
 
   server = app.listen(3000, function () {
@@ -124,4 +123,7 @@
     console.log('Example app listening at http://%s:%s', host, port);
   });
 
-}());
+process.on('uncaughtException', function (err) {
+  console.log("\n\r Uncaught Exception event \n\r");
+  console.log(err);
+});
