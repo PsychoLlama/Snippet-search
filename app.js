@@ -116,12 +116,8 @@
     });
 
   }); // ending of data base on connect
-
-  server = app.listen(3000, function () {
-    var host = server.address().address,
-      port = server.address().port;
-    console.log('Example app listening at http://%s:%s', host, port);
-  });
+var Port  = process.env["PORT"] || 8080;
+app.listen(Port);
 
 process.on('uncaughtException', function (err) {
   console.log("\n\r Uncaught Exception event \n\r");
