@@ -5,12 +5,12 @@
   var bodyParser = require('body-parser'),
     path = require('path'),
       module = require('./databaseinfo'),
-      routes = require('.routes'),
+      routes = require  ('./routes'),
     mongoose = require('mongoose'),
     db = mongoose.connection,
     express = require('express'),
-    app = express(),
-    server;
+    app = express();
+
 
   app.set('view engine', 'ejs');
 
