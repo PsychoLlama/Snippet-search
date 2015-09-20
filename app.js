@@ -5,7 +5,7 @@
   var bodyParser = require('body-parser'),
     path = require('path'),
       module = require('./databaseinfo'),
-      routes = require  ('./routes'),
+      routes = require  ('./routes/index'),
     mongoose = require('mongoose'),
     db = mongoose.connection,
     express = require('express'),
