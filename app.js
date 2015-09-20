@@ -25,10 +25,7 @@
   db.on('error', console.error.bind(console, 'connection error:'));
 
   db.once('open', function (callback) {
-    var UserSchema = mongoose.Schema({
-        Snipplet: []
-      }),
-      usersinfo = mongoose.model('snippletdata2', UserSchema);
+
 
     app.get('/codeadded',routes.codeadded);
     app.get('/',routes.index);
