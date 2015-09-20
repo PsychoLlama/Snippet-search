@@ -1,5 +1,11 @@
 //adding routes
 
+var UserSchema = mongoose.Schema({
+        Snipplet: []
+    }),
+
+    usersinfo = mongoose.model('snippletdata2', UserSchema);
+
 exports.codeadd = function (req, res) {
     res.render('codeadded');
 };

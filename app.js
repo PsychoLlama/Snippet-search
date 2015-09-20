@@ -25,19 +25,13 @@
   db.on('error', console.error.bind(console, 'connection error:'));
 
   db.once('open', function (callback) {
-    var UserSchema = mongoose.Schema({
-        Snipplet: []
-      }),
-
-    usersinfo = mongoose.model('snippletdata2', UserSchema);
-
     app.get('/codeadded',routes.codeadd);
     app.get('/',routes.index);
     app.post('/search',routes.search);
     app.post('/codeenterd',routes.codeadded);
     app.post('/delete',routes.delete);
-
   }); // ending of data base on connect
+
 var Port  = process.env["PORT"] || 8080;
 app.listen(Port);
 
