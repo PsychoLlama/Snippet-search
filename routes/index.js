@@ -1,88 +1,91 @@
-mongoose = require('mongoose');
-var UserSchema = mongoose.Schema({
-        Snipplet: []
-    }),
-    usersinfo = mongoose.model('snippletdata2', UserSchema);
+/*globals require*/
+/*jslint node: true */
 
-exports.codeadded = function (req, res) {
+'use strict';
+
+var mongoose = require('mongoose'),
+  UserSchema = mongoose.Schema({
+    Snipplet: []
+  }),
+  usersinfo = mongoose.model('snippletdata2', UserSchema);
+
+// Middleware definitions
+module.exports = {
+  codeadded: function (req, res) {
     res.render('codeadded');
-};
+  },
 
-exports.index  = function (req, res) {
+  index: function (req, res) {
     res.render('index', {
-        snipplets: ''
+      snipplets: ''
     });
-};
+  },
 
-exports.search = function (req, res) {
-    var title = req.body.search;
-    usersinfo.findOne({
+  search: function (req, res) {
+    var title = req.body.search,
+      searchData = {
         Snipplet: {
-            $elemMatch: {
-                title: new RegExp(title, "i")
-            }
+          $elemMatch: {
+            title: new RegExp(title, "i")
+          }
         }
-    }, {
-        Snipplet: {
-            $elemMatch: {
-                title: new RegExp(title, "i")
-            }
-        }
-    }, function (err, snipp) {
-        if (err) {
-            return console.error(err);
-        }
-        if (snipp) {
-            res.render('index', {
-                snipplets: snipp.Snipplet[0]
-            });
-        } else {
-            res.render('index', {
-                snipplets: null
-            });
-        }
+      };
+
+    usersinfo.findOne(searchData, searchData, function (err, snipp) {
+      if (err) {
+        return console.error(err);
+      }
+      if (snipp) {
+        res.render('index', {
+          snipplets: snipp.Snipplet[0]
+        });
+      } else {
+        res.render('index', {
+          snipplets: null
+        });
+      }
     });
-};
+  },
 
-exports.codeenterd = function (req, res) {
+  codeentered: function (req, res) {
     var updateobject = {
-        title: req.body.title,
-        body: req.body.codesnippet,
-        desc: req.body.description
+      title: req.body.title,
+      body: req.body.codesnippet,
+      desc: req.body.description
     };
 
     usersinfo.update({
-        'name': 'codesolutions'
+      'name': 'codesolutions'
     }, {
-        $push: {
-            Snipplet: updateobject
-        }
+      $push: {
+        Snipplet: updateobject
+      }
     }, {
-        upsert: true
+      upsert: true
     }, function (err) {
-        if (err) {
-            return console.error(err);
-        } else {
-            res.redirect('/');
-        }
+      if (err) {
+        return console.error(err);
+      } else {
+        res.redirect('/');
+      }
     });
-};
+  },
 
-exports.delete =  function (req, res) {
-    console.log(req.body);
+  "delete": function (req, res) {
     usersinfo.findOneAndUpdate({
-        'name': 'codesolutions'
+      'name': 'codesolutions'
     }, {
-        $pull: {
-            Snipplet: {
-                body: req.body.filetodelete
-            }
+      $pull: {
+        Snipplet: {
+          body: req.body.filetodelete
         }
+      }
     }, function (err) {
-        if (err) {
-            return console.error(err);
-        } else {
-            res.redirect('/');
-        }
+      if (err) {
+        return console.error(err);
+      } else {
+        res.redirect('/');
+      }
     });
+  }
 };

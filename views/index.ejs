@@ -7,7 +7,7 @@
 
   <!--styles-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/assets/styles/home.css">
+  <link rel="stylesheet" href="/styles/home.css">
 
 </head>
 
@@ -59,10 +59,14 @@
         <div class="caption">
           <h3><%= snipplets.title %></h3>
 
-          <p><%= snipplets.desc%></p>
+          <p><%= snipplets.desc %></p>
           <form action="/delete" method="post">
             <p>
-              <button class="btn btn-danger" value="<%= snipplets.body%>" name="filetodelete" type="submit">Delete</button>
+              <button
+                class="btn btn-danger"
+                value="<%= snipplets.body %>"
+                name="filetodelete"
+                type="submit">Delete</button>
             </p>
           </form>
         </div>
@@ -84,9 +88,9 @@
 <% } %>
 
 <!--scripts-->
-<script src="/assets/scripts/form-validation.js"></script>
+<script src="/scripts/form-validation.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
-<script src="/assets/scripts/snippet-defaults.js"></script>
+<script src="/scripts/snippet-defaults.js"></script>
 </body>
 
 </html>

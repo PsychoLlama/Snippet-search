@@ -19,10 +19,6 @@ Curious how to make a Node server? We've got you.
 If you don't find what you're looking for,
 you can always publish your own.
 
-You can test the demo of this app at https://snippetsearch.herokuapp.com/
-So give it a shot and tell us what you think!
-
-
 > This GitHub project is open to contributions
 To find out how to run the app on your local machine
 Take a look at the wiki getting started for further info.
