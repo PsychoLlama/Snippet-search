@@ -5,48 +5,49 @@
 
 var mongoose = require('mongoose'),
   UserSchema = mongoose.Schema({
-    Snipplet: []
+    snippet: []
   }),
   usersinfo = mongoose.model('snippletdata2', UserSchema);
 
 // Middleware definitions
 module.exports = {
   codeadded: function (req, res) {
-    res.render('codeadded');
-  },
-
-  index: function (req, res) {
-    res.render('index', {
-      snipplets: ''
+    res.render('codeadded', {
+      snippets: null
     });
   },
 
+  // Serve root file
+  index: function (req, res) {
+    res.render('index', {
+      snippets: ''
+    });
+  },
+
+  // Search snippets
   search: function (req, res) {
     var title = req.body.search,
-      searchData = {
-        Snipplet: {
+      query = {
+        snippets: {
           $elemMatch: {
             title: new RegExp(title, "i")
           }
         }
       };
+    console.log(req.body.search);
 
-    usersinfo.findOne(searchData, searchData, function (err, snipp) {
-      if (err) {
-        return console.error(err);
-      }
-      if (snipp) {
-        res.render('index', {
-          snipplets: snipp.Snipplet[0]
+    usersinfo.find(query,
+      function (err, snippets) {
+        if (err) {
+          return console.error(err);
+        }
+        res.status(200).json({
+          snippets: snippets
         });
-      } else {
-        res.render('index', {
-          snipplets: null
-        });
-      }
-    });
+      });
   },
 
+  // New snippet
   codeentered: function (req, res) {
     var updateobject = {
       title: req.body.title,
@@ -58,25 +59,31 @@ module.exports = {
       'name': 'codesolutions'
     }, {
       $push: {
-        Snipplet: updateobject
+        snippet: updateobject
       }
     }, {
       upsert: true
     }, function (err) {
       if (err) {
+        res.status(400).json({
+          snippet: null
+        });
         return console.error(err);
       } else {
-        res.redirect('/');
+        res.status(200).json({
+          snippet: updateobject
+        });
       }
     });
   },
 
+  // Delete
   "delete": function (req, res) {
     usersinfo.findOneAndUpdate({
       'name': 'codesolutions'
     }, {
       $pull: {
-        Snipplet: {
+        snippet: {
           body: req.body.filetodelete
         }
       }

@@ -8,33 +8,28 @@ var bodyParser = require('body-parser'),
   db = mongoose.connection,
   express = require('express'),
   app = express(),
-  Port = process.env.PORT || 8080;
+  port = process.env.PORT || 8080;
 
 app.set('view engine', 'ejs');
-
 app.use(express['static']('public'));
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 mongoose.connect('mongodb://localhost/snippetdata/');
-
 db.on('error', console.error.bind(console, 'Connection error:'));
 
 db.once('open', function () {
   // Routes
-  app.get('/codeadded', routes.codeadded);
-  app.get('/', routes.index);
-  app.post('/search', routes.search);
-  app.post('/codeentered', routes.codeentered);
-  app.post('/delete', routes["delete"]);
+  app.get('/', routes.index)
+    .get('/codeadded', routes.codeadded)
+    .post('/search', routes.search)
+    .post('/codeentered', routes.codeentered)
+    .post('/delete', routes["delete"]);
 });
 
-app.listen(Port, function () {
-  console.log("listening on port", Port);
+app.listen(port, function () {
+  console.log("listening on port", port);
 });
 
-process.on('uncaughtException', function (err) {
-  console.log("\nUncaught Exception event\n\n");
-  console.log(err);
-});
+process.on('uncaughtException',
+   console.log.bind(console, "Uncaught Exception:"));
