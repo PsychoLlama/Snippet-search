@@ -7,71 +7,76 @@ var mongoose = require('mongoose'),
   UserSchema = mongoose.Schema({
     snippet: []
   }),
-  usersinfo = mongoose.model('snippletdata2', UserSchema);
+  usersinfo = mongoose.model('snippetdata', UserSchema);
 
 // Middleware definitions
 module.exports = {
-  codeadded: function (req, res) {
-    res.render('codeadded', {
-      snippets: null
-    });
-  },
 
   // Serve root file
   index: function (req, res) {
-    res.render('index', {
-      snippets: ''
-    });
+    usersinfo.find({},
+      function (err, snippets) {
+        if (err) {
+          return res.status(400).json("Horrible error! We barely escaped with our lives...");
+        }
+        if (!snippets[0]) {
+          return res.render('index', {
+            snippets: []
+          });
+        }
+        res.render('index', {
+          snippets: snippets[0].snippet
+        });
+      });
   },
 
   // Search snippets
   search: function (req, res) {
     var title = req.body.search,
       query = {
-        snippets: {
+        snippet: {
           $elemMatch: {
-            title: new RegExp(title, "i")
+            title: new RegExp(title, 'i')
           }
         }
       };
-    console.log(req.body.search);
 
+    // Finding the empty snippet array
     usersinfo.find(query,
-      function (err, snippets) {
+      function (err, snippet) {
         if (err) {
           return console.error(err);
         }
-        res.status(200).json({
-          snippets: snippets
-        });
+        res.status(200).json(snippet[0].snippet);
       });
   },
 
   // New snippet
   codeentered: function (req, res) {
-    var updateobject = {
+    var updateObject = {
       title: req.body.title,
-      body: req.body.codesnippet,
-      desc: req.body.description
+      codesnippet: req.body.codesnippet,
+      description: req.body.description
     };
 
+    // Find the object with the name "codesolutions"
+    // Find an array named "snippet"
+    // Push "updateObject" to that array
     usersinfo.update({
-      'name': 'codesolutions'
+      name: 'codesolutions'
     }, {
       $push: {
-        snippet: updateobject
+        snippet: updateObject
       }
     }, {
       upsert: true
     }, function (err) {
       if (err) {
-        res.status(400).json({
-          snippet: null
-        });
+        res.status(400).json("Horrible error! Servers burning everywhere.");
         return console.error(err);
       } else {
         res.status(200).json({
-          snippet: updateobject
+          snippet: updateObject
         });
       }
     });

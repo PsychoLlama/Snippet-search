@@ -3,95 +3,46 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Home | Snippet Search</title>
-
-  <!--styles-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/styles/home.css">
-
+  <title>Find popular code snippets</title>
 </head>
 
-<body>
+<body ng-app="App">
+  <header>
+    <search></search>
+  </header>
 
-<!--Navigation-->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+  <new-snippet></new-snippet>
 
-    <a href="/codeadded">
-      <button class="btn btn-default navbar-btn">
-        <span class="glyphicon glyphicon-pencil"></span> New
-      </button>
-    </a>
-  </div>
+  <% if (snippets.length === 0) { %>
 
-</nav>
+    <small>No snippets to render</small>
 
-<!--Search field-->
-<div class="jumbotron">
-  <div class="container">
+  <% } else { %>
 
-    <h1>Snippet Search</h1>
+    <table>
+    <% snippets.forEach(function(snippet) { %>
+        <tr>
+          <td>
+            <%= snippet.title %>
+          </td>
+          <td>
+            <%= snippet.codesnippet %>
+          </td>
+          <td>
+            <%= snippet.description %>
+          </td>
+        </tr>
+      <% }); %>
+    </table>
 
-    <form class="input-group" action="/search">
+  <% } %>
 
-      <input class="form-control validate" name="search" type="text" placeholder="Clearfix, Node server, etc...">
-
-
-      <div class="input-group-btn">
-        <button type="submit" class="btn btn-primary">Search</button>
-      </div>
-
-    </form>
-
-  </div>
-</div>
-
-<% if (snippets) { %>
-
-<!--Snippet-->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-
-        <pre><code><%= snippets.body %></code></pre>
-
-        <div class="caption">
-          <h3><%= snippets.title %></h3>
-
-          <p><%= snippets.desc %></p>
-          <form action="/delete" method="post">
-            <p>
-              <button
-                class="btn btn-danger"
-                value="<%= snippets.body %>"
-                name="filetodelete"
-                type="submit">Delete</button>
-            </p>
-          </form>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<% } else if (snippets === null) { %>
-
-<div class="container">
-  <div class="alert alert-warning">
-    <strong>We couldn't find what you were looking for.</strong> You can also <a href="/codeadded">add your own</a>.
-  </div>
-</div>
-
-<% } %>
-
-<!--scripts-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="/scripts/form-validation.js"></script>
-<!--<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>-->
-<!--<script src="/scripts/snippet-defaults.js"></script>-->
+  <!--scripts-->
+  <script src="/app/angular.min.js"></script>
+  <script src="/app/angular.init.js"></script>
+  <script src="/app/directives/search/search.js"></script>
+  <script src="/app/directives/new-snippet/new-snippet.js"></script>
+  <!--<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>-->
 </body>
 
 </html>

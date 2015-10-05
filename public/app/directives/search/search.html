@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/app/directives/search/search.css">
+
+<div id="search" ng-controller="SearchController">
+  <form>
+
+    <p>
+      Search
+    </p>
+
+    <input type="text" name="search" ng-model="query" />
+    <button type='submit' ng-click="send(query)">Go</button>
+
+  </form>
+</div>

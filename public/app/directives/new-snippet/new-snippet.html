@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/app/directives/new-snippet/new-snippet.css">
+
+<div ng-controller="NewSnippetController" id="new-snippet">
+
+  <form>
+    <p>
+      New
+    </p>
+
+    <input type="text" name="title" ng-model="snippet.title">
+    <input type="text" name="codesnippet" ng-model="snippet.codesnippet">
+    <input type="text" name="description" ng-model="snippet.description">
+
+    <button type="submit" ng-click='add(snippet)'>New</button>
+  </form>
+
+</div>

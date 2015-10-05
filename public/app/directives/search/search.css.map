@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "search.css",
+  "sources": [
+    "search.scss"
+  ],
+  "sourcesContent": [],
+  "mappings": ";AAAA,OAAO,CAAC;EACN,KAAK,EAAE,OAAQ;EACf,WAAW,EAAE,UAAW,GAFjB",
+  "names": []
+}

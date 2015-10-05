@@ -15,13 +15,12 @@ app.use(express['static']('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-mongoose.connect('mongodb://localhost/snippetdata/');
+mongoose.connect('localhost', 'snippetdata');
 db.on('error', console.error.bind(console, 'Connection error:'));
 
 db.once('open', function () {
   // Routes
   app.get('/', routes.index)
-    .get('/codeadded', routes.codeadded)
     .post('/search', routes.search)
     .post('/codeentered', routes.codeentered)
     .post('/delete', routes["delete"]);

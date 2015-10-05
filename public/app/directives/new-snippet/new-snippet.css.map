@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "new-snippet.css",
+  "sources": [
+    "new-snippet.scss"
+  ],
+  "sourcesContent": [],
+  "mappings": ";AAAA,YAAY,CAAC;EACX,KAAK,EAAE,OAAQ;EACf,WAAW,EAAE,UAAW,GAFZ",
+  "names": []
+}
